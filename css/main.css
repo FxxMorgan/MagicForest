@@ -136,55 +136,95 @@ body {
 
 
 
-/* Path: BosqueEncantado\ready-html\css\main.css */
+/* Estas clases sustituirán las antiguas elf-section, elf-image y elf-text */
+.race-section {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+    background-color: rgba(1, 1, 1, 0.9);
+    border-bottom: 1px solid #2a2a2a;
+}
 
-.elf-image, .elf-text {
+.race-section.reverse {
+    flex-direction: row-reverse;
+    background-color: rgba(10, 10, 10, 0.95);
+}
+
+.race-image, .race-text {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.elf-image img {
-    height: 100%;
-    object-fit: cover;
+.race-image {
+    overflow: hidden;
+    position: relative;
 }
 
-.elf-text {
-    padding: 2em;
+.race-image img {
+    max-height: 90%;
+    max-width: 90%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+}
+
+.race-image img:hover {
+    transform: scale(1.05);
+}
+
+.left-image {
+    justify-content: flex-end;
+    padding-right: 2em;
+}
+
+.right-image {
+    justify-content: flex-start;
+    padding-left: 2em;
+}
+
+.race-text {
+    padding: 3em;
     color: var(--text);
     text-align: justify;
-}
-
-.elf-text {
     font-family: 'Cinzel', serif;
-	font-weight: 700;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 2em;
+}
+
+.race-text h2 {
+    font-size: calc(var(--index) * 1.5);
+    margin-bottom: calc(var(--index) * 1);
+    text-transform: uppercase;
+    letter-spacing: calc(var(--index) / 7.5);
     color: var(--text);
-    text-align: justify;
+    text-shadow: 0 0 10px #9d822b;
+    align-self: center;
 }
 
-.elf-section {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;  /* Ajusta a tu necesidad */
-}
-
+/* Media queries para dispositivos móviles */
 @media screen and (max-width: 768px) {
-    .elf-section {
+    .race-section, .race-section.reverse {
         flex-direction: column;
     }
 
-    .elf-image, .elf-text {
-        height: 50vh; /* Ajusta a tu necesidad */
-    }
-
-    .elf-image img {
+    .race-image, .race-text {
         width: 100%;
-        height: auto;
+        min-height: 50vh;
+    }
+    
+    .left-image, .right-image {
+        padding: 1em;
+        justify-content: center;
+    }
+    
+    .race-text {
+        padding: 2em 1.5em;
+    }
+    
+    .race-text h2 {
+        font-size: calc(var(--index) * 1.2);
     }
 }
+
