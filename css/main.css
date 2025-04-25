@@ -3,11 +3,14 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
 :root {
 	--index: calc(1vw + 1vh);
 	--text: #e7e7e0;
 	--transition: transform .75s cubic-bezier(.075, .5, 0, 1);
+    --scrollTop: 0px; /* Valor inicial para la variable */
 }
+
 @font-face {
 	font-family: raleway_f;
 	src: url(../fonts/raleway-regular.woff2);
@@ -66,7 +69,7 @@ body {
 .layers__front {
 	transform: translate3d(0, calc(var(--scrollTop) / 5.7), 0);
 }
-.layer__header {
+.layers__header {
 	z-index: 1;
 	transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
 	transition: var(--transition);
